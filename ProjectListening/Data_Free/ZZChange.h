@@ -30,6 +30,7 @@
 //1.1.0此版本更新后，把题目全部解锁了，需要把PackInfo中的IsVip都修改成YES
 #define kApplicationVersion @"Ver_1.1.0"
 
+
 #define AUDIO_SUFFIX @".m4a"
 #define TEMP_AUDIO_SUFFIX @".m4a"
 
