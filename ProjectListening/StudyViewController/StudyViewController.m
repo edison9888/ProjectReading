@@ -5,7 +5,7 @@
 //  Created by zhaozilong on 13-3-25.
 //
 //
-
+//播放器的相关问题
 #import "StudyViewController.h"
 #import "TextCell.h"
 #import "QuesCell.h"
@@ -33,7 +33,7 @@
 //#define IPHONE_GRAYLINE_CHANGE_HEIGHT 90
 
 #define IPHONE_TEXTTABLE_CHANGE_HEIGHT 260.0
-#define IPHONE_QUESTABLE_CHANGE_HEIGHT 101.0
+#define IPHONE_QUESTABLE_CHANGE_HEIGHT 156.0
 
 #define IPHONE5_TEXTTABLE_CHANGE_HEIGHT 348.0
 #define IPHONE5_QUESTABLE_CHANGE_HEIGHT 101.0
@@ -111,7 +111,7 @@ typedef enum {
         [_quesAudioPlayer setDelegate:nil];
         [_quesAudioPlayer release], _quesAudioPlayer = nil;
     }
-    [_audioPlayer release];
+     //播放器的相关问题[_audioPlayer release];
     [_questionTable release];
     [_textTable release];
     [_TAQArray release];
@@ -135,6 +135,7 @@ typedef enum {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         //从哪个入口进来的
+
         _enterType = enterType;
         
         if (_enterType == EnterTypePlan) {
@@ -260,7 +261,7 @@ typedef enum {
         _isZZAudioPlaying = [_audioPlayer isZZAudioPlaying];
     }
     //退出的时候或则系统字典出现的时候均停止播放音频s
-    [_audioPlayer setZZAudioPlayerPause];
+    //播放器的相关问题[_audioPlayer setZZAudioPlayerPause];
     
     
 }
@@ -315,23 +316,23 @@ typedef enum {
     
     
     //设置播放器委托,并初始化一些设置
-    _audioPlayer.delegate = self;
+   //播放器的相关问题 _audioPlayer.delegate = self;
     TextAndQuesClass *TAQ = [self getCurrTAQ];
     NSMutableArray *times = [TAQ timingArray];
-    [_audioPlayer initializeAudioPlayer];
+   //播放器的相关问题 [_audioPlayer initializeAudioPlayer];
 //    [_audioPlayer playSoundByAudioName:TAQ.soundName timeArray:times lastTimePoint:0];
-    [_audioPlayer playSoundWithAudioName:TAQ.soundName packName:TAQ.packName isFree:TAQ.isFree timeArray:times lastTimePoint:0];
-    [_audioPlayer fireSliderTimer:YES];
+   //播放器的相关问题 [_audioPlayer playSoundWithAudioName:TAQ.soundName packName:TAQ.packName isFree:TAQ.isFree timeArray:times lastTimePoint:0];
+   //播放器的相关问题 [_audioPlayer fireSliderTimer:YES];
     
     if (!TAQ.isVip) {
         [self showAlertView];
     }
     //显示上一题下一题箭头
     if (_currentIndex == _lastIndex) {
-        [_audioPlayer.nextQuesBtn setEnabled:NO];
+       //播放器的相关问题 [_audioPlayer.nextQuesBtn setEnabled:NO];
     }
     if (_currentIndex == _firstIndex) {
-        [_audioPlayer.prevQuesBtn setEnabled:NO];
+       //播放器的相关问题 [_audioPlayer.prevQuesBtn setEnabled:NO];
     }
     
     //设置title的宽度，看是否有解析
@@ -443,11 +444,16 @@ typedef enum {
         height = 53;  
         adHeight = 78;
     }
-    CGPoint point = CGPointMake(self.view.center.x, self.view.frame.size.height - rect.size.height / 2 - height);
+    CGPoint point = CGPointMake(self.view.center.x, self.view.frame.size.height - rect.size.height / 2 - height+55);
+    //160     382
+//    NSLog(@"self.view.center.x: %f",self.view.center.x);
+//    NSLog(@" self.view.frame.size.height - rect.size.height / 2 - height: %f", self.view.frame.size.height - rect.size.height / 2 - height);
+
     _adView.center = point;
     _adView.delegate = self;
-    [self.view insertSubview:_adView belowSubview:self.audioPlayer];
+//    [self.view insertSubview:_adView belowSubview:self.audioPlayer];
 //    [self.view addSubview:_adView];
+    [self.view insertSubview:_adView belowSubview:self.textTable];
     [_adView loadRequest:[GADRequest request]];
     
     //判断网络状态
@@ -571,7 +577,7 @@ typedef enum {
 }
 
 - (BOOL)isHasExplain:(TextAndQuesClass *)TAQ {
-    if (TAQ.isENExplain || TAQ.isJPExplain || TAQ.isCNExplain/* || YES*/) {
+    if (TAQ.isENExplain || TAQ.isJPExplain || TAQ.isCNExplain || YES) {
         return YES;
     }
     return NO;
@@ -609,7 +615,7 @@ typedef enum {
     
     if (_currQuesPlayIndex != quesIndex) {
         //把原文播放的音频停止
-        [_audioPlayer setZZAudioPlayerPause];
+       //播放器的相关问题 [_audioPlayer setZZAudioPlayerPause];
         
         //把之前的停止
         QuesCell *cell = (QuesCell *)[_questionTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:_currQuesPlayIndex - 1 inSection:0]];
@@ -659,7 +665,7 @@ typedef enum {
     
     if (_textShowStyle == TextShowStyleNone) {
         pngName = @"textPart.png";
-        
+        [self.textTable setScrollEnabled:YES];
         //textTable & quesTable change
         CGRect tFrame = _textTable.frame;
         CGPoint tPoint = tFrame.origin;
@@ -716,6 +722,7 @@ typedef enum {
             CGSize qSize = qFrame.size;
             qSize.height -= [self adBannerHeight];
             qFrame.size = qSize;
+            [self.textTable setScrollEnabled:YES];
             
             [_questionTable setFrame:qFrame];
         }
@@ -749,7 +756,8 @@ typedef enum {
         _textShowStyle = TextShowStyleNone;
         pngName = @"textPart.png";
         
-        _textTable.scrollEnabled = NO;
+//        _textTable.scrollEnabled = NO;
+        _textTable.scrollEnabled = YES;
         
         [_textTable beginUpdates];
         [_textTable deleteRowsAtIndexPaths:editRows withRowAnimation:UITableViewRowAnimationBottom];
@@ -1307,7 +1315,7 @@ typedef enum {
     
     //更改播放的音频
 //    [_audioPlayer playSoundByAudioName:currTAQ.soundName timeArray:currTAQ.timingArray lastTimePoint:0.0f];
-    [_audioPlayer playSoundWithAudioName:currTAQ.soundName packName:currTAQ.packName isFree:currTAQ.isFree timeArray:currTAQ.timingArray lastTimePoint:0.0f];
+   //播放器的相关问题 [_audioPlayer playSoundWithAudioName:currTAQ.soundName packName:currTAQ.packName isFree:currTAQ.isFree timeArray:currTAQ.timingArray lastTimePoint:0.0f];
     
     //问题是否可以滚动
     [self checkQuestionScrollEnabled];
@@ -1698,9 +1706,7 @@ typedef enum {
         }
 
     }
-    
     return imgView;
-    
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
@@ -2227,7 +2233,7 @@ typedef enum {
 
 - (void)ZZAudioNextTitleBtnPressed {
     if (_currentIndex < _lastIndex) {
-        [_audioPlayer.prevQuesBtn setEnabled:YES];
+        //播放器的相关问题[_audioPlayer.prevQuesBtn setEnabled:YES];
         
         TextAndQuesClass *prevTAQ = [self getCurrTAQ];
         
@@ -2238,14 +2244,14 @@ typedef enum {
         
     }
     if (_currentIndex >= _lastIndex) {
-        [_audioPlayer.nextQuesBtn setEnabled:NO];
+       //播放器的相关问题 [_audioPlayer.nextQuesBtn setEnabled:NO];
     }
     
 }
 
 - (void)ZZAudioPrevTitleBtnPressed {
     if (_currentIndex > 1) {
-        [_audioPlayer.nextQuesBtn setEnabled:YES];
+        //播放器的相关问题[_audioPlayer.nextQuesBtn setEnabled:YES];
         
         TextAndQuesClass *prevTAQ = [self getCurrTAQ];
         
@@ -2256,7 +2262,7 @@ typedef enum {
     }
     
     if (_currentIndex <= 1) {
-        [_audioPlayer.prevQuesBtn setEnabled:NO];
+       //播放器的相关问题 [_audioPlayer.prevQuesBtn setEnabled:NO];
     }
 }
 
@@ -2304,9 +2310,9 @@ typedef enum {
     if (_isZZAudioPlaying) {
         
     } else {
-        _isZZAudioPlaying = [_audioPlayer isZZAudioPlaying];
+       //播放器的相关问题 _isZZAudioPlaying = [_audioPlayer isZZAudioPlaying];
     }
-    [_audioPlayer setZZAudioPlayerPause];
+   //播放器的相关问题 [_audioPlayer setZZAudioPlayerPause];
     
 //    NSString * name = word;
     //本地化一下子
@@ -2514,7 +2520,7 @@ typedef enum {
 
 - (void)ZZAudioContinuePlayOrNot {
     if (_isZZAudioPlaying) {
-        [_audioPlayer playBtnPressed:nil];
+       //播放器的相关问题 [_audioPlayer playBtnPressed:nil];
         _isZZAudioPlaying = NO;
     }
 }

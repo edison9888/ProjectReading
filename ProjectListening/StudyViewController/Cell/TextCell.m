@@ -66,7 +66,8 @@
 
 - (void)setSyncSingleTVLayoutWithText:(NSString *)text {
     CGRect frame = _syncTV.frame;
-    frame.size.height = (IS_IPAD ? 170.0f : 82.0f);
+//    frame.size.height = (IS_IPAD ? 170.0f : 82.0f);
+    frame.size.height = (IS_IPAD ? 170.0f : 142.0f);
     frame.origin.y = 2;
     _syncTV.frame = frame;
     

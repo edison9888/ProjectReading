@@ -25,7 +25,8 @@ typedef enum {
 //@property (retain, nonatomic) IBOutlet TextView *syncView;
 @property (retain, nonatomic) IBOutlet UITableView *questionTable;
 @property (retain, nonatomic) IBOutlet UITableView *textTable;
-@property (assign, nonatomic) IBOutlet ZZAudioPlayer *audioPlayer;
+//@property (assign, nonatomic) IBOutlet ZZAudioPlayer *audioPlayer;
+@property (assign, nonatomic) ZZAudioPlayer *audioPlayer;
 @property (retain, nonatomic) IBOutlet UIImageView *grayLineView;
 //@property (retain, nonatomic) IBOutlet UIView *wordView;
 @property (retain, nonatomic) AVAudioPlayer *quesAudioPlayer;

@@ -16,6 +16,7 @@
 		009F2685171EF1A50046F141 /* NewWordsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 009F267D171EF1A50046F141 /* NewWordsViewController.xib */; };
 		009F2690171EF3C00046F141 /* UserWordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 009F268E171EF3C00046F141 /* UserWordCell.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		009F2691171EF3C00046F141 /* UserWordCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 009F268F171EF3C00046F141 /* UserWordCellView.xib */; };
+		5B3000BF17B0A5C2009B746D /* KaoYanReading.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B3000BE17B0A5C2009B746D /* KaoYanReading.sqlite3 */; };
 		7B002BFB1715AA4B009088A2 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B002BFA1715AA4B009088A2 /* libxml2.dylib */; };
 		7B002BFD1715AA5A009088A2 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B002BFC1715AA5A009088A2 /* libicucore.dylib */; };
 		7B002BFF1715AA6C009088A2 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B002BFE1715AA6C009088A2 /* libz.dylib */; };
@@ -881,6 +882,7 @@
 		009F268D171EF3BF0046F141 /* UserWordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserWordCell.h; sourceTree = "<group>"; };
 		009F268E171EF3C00046F141 /* UserWordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserWordCell.m; sourceTree = "<group>"; };
 		009F268F171EF3C00046F141 /* UserWordCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserWordCellView.xib; sourceTree = "<group>"; };
+		5B3000BE17B0A5C2009B746D /* KaoYanReading.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = KaoYanReading.sqlite3; sourceTree = "<group>"; };
 		7B002BFA1715AA4B009088A2 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		7B002BFC1715AA5A009088A2 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		7B002BFE1715AA6C009088A2 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -2070,6 +2072,7 @@
 		7B2558CF1786D876004E74E9 /* Data_Free */ = {
 			isa = PBXGroup;
 			children = (
+				5B3000BE17B0A5C2009B746D /* KaoYanReading.sqlite3 */,
 				7B2558D01786D876004E74E9 /* Assistant.plist */,
 				7B2558D11786D876004E74E9 /* InAppSettings.bundle */,
 				7B2558D21786D876004E74E9 /* Products.plist */,
@@ -4543,6 +4546,7 @@
 				7B255B7A1786D878004E74E9 /* Icon-Small@2x.png in Resources */,
 				7B255B7B1786D878004E74E9 /* Icon.png in Resources */,
 				7B255B7C1786D878004E74E9 /* Icon@2x.png in Resources */,
+				5B3000BF17B0A5C2009B746D /* KaoYanReading.sqlite3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
